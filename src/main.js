@@ -8,6 +8,18 @@ import ElementUI from 'element-ui';
 
 Vue.config.productionTip = false
 
+// 全局路由守卫
+router.beforeEach((to,from,next)=>{
+  //根据用户token判断是否登陆
+  if(!store.state.UserToken){
+    // 没有登陆
+    next({ path: '/login' })
+  }else{
+    //已经登陆
+  }
+})
+
+
  
 Vue.use(ElementUI)
 

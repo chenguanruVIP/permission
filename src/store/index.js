@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import permission from './modules/permission'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+    permission,
     state: {
         get UserToken() {
             return localStorage.getItem('access_token')
