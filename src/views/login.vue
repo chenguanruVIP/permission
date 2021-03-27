@@ -45,7 +45,11 @@ export default {
             setTimeout(()=>{
                 this.loading = false
                 this.$store.commit('loginSuccess','a123-uuser-1285-9969-admin123')
-                this.$router.push({path: '/'})
+
+                this.$router.push({path: '/'}).catch(() => {
+                    // 捕获异常
+                })
+                
             },1000)
         }
         

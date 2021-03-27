@@ -1,0 +1,29 @@
+html,body,p,div,article,section,header,span,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,i,em{
+    margin: 0;
+    padding: 0;
+}
+img{
+    display: inline-block;
+}
+html{
+    background-color: #fafafa;
+}
+.t2{
+    font-size: 56px;
+}
+.t3{
+    font-size: 42px;
+}
+.t4{
+    font-size: 32px;
+}
+ul,li{
+    list-style: none;
+}
+/***/
+$navDefaultColor:#ffffff;
+$navDefaultSize:16px;
+$navDefaultBg:#000000;
+
+$activeColor: #497bf6;
+$blueColor: #4771F5;

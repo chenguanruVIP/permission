@@ -1,5 +1,7 @@
 <template>
-    <div>老师管理菜单</div>
+    <div>
+        <router-view></router-view>
+    </div>
 </template>
 <script>
 export default {

@@ -65,7 +65,7 @@ const dynamicRouter = [
         name:'studentManage',
         component:studentManage,
         meta:{
-            name:'学生菜单',
+            name:'学生管理',
             icon:'el-icon-user-solid'
         },
         children:[

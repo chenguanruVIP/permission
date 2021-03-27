@@ -1,5 +1,6 @@
 // 做权限验证的模块
-import dynamicRouter from '../../router/dynamic-router'//导入我们需要匹配所有动态路由
+import router,{ dynamicRoutes } from '../../router/index'//导入在index里面配置的动态路由的父节点
+import dymaicList from '../../router/dynamic-router'//需要对比的列表
 import axiosMenuList from './menuList'//模拟后台返回的数据配置
 
 /**
@@ -19,7 +20,7 @@ function axiosPermission(){
 function filterRouter(axiosResult){
     let returnList = []
     axiosResult.forEach((v)=>{
-        dynamicRouter.forEach((item)=>{
+        dymaicList.forEach((item)=>{
             if(item.meta.name == v.menuName){
                 if(v.childRen && v.childRen.length>0){
                     // 递归
@@ -34,6 +35,7 @@ function filterRouter(axiosResult){
 
 
 export default {
+    namespaced: true,//开启命名空间
     state: {
         permissionList: null /** 所有路由,前端与后台匹配之后的路由 */,
         sidebarMenu: [] /** 导航菜单 */,
@@ -68,18 +70,22 @@ export default {
         async MERAGE_ROUTER({ commit }){
             // 获取后端返回来的菜单
             let axiosResult = await axiosPermission()
-
             // 前后端的路由进行匹配
             let finishRouter = filterRouter(axiosResult)
-            //在主路由中的children中添加上过滤后的路由
-            let children = dynamicRouter[0].children//直接获取到
+            //在主路由中的children中添加上过滤后的路由\
+            let children = dynamicRoutes[0].children//直接获取到
+            
             children.push(...finishRouter)
-
             // 生成侧边菜单
             commit('SET_SILDBARMENU',children)
 
-            //设置默认菜单
-
+            /*  初始路由 ==>就是登陆的页面*/
+            let initialRoutes = router.options.routes
+            //调用方法添加动态的路由,addRoute和addRoutes的用法查看文档
+            router.addRoute('/',...dynamicRoutes)
+            // router.addRoutes(dynamicRoutes)//旧版的这样用
+            //记录所有的路由、初始化的路由+动态路由
+            commit('SER_PERMISSION',[...dynamicRoutes,...initialRoutes])
         }
     }
 }

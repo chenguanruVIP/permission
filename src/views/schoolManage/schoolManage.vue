@@ -1,5 +1,5 @@
 <template>
-    <div>老师管理菜单=====菜单2</div>
+    <div>学校管理菜单=====</div>
 </template>
 <script>
 export default {
