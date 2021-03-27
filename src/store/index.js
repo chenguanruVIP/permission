@@ -5,7 +5,6 @@ import permission from './modules/permission'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    permission,
     state: {
         get UserToken() {
             return localStorage.getItem('access_token')
@@ -23,5 +22,6 @@ export default new Vuex.Store({
     actions: {
     },
     modules: {
+        permission
     }
 })
