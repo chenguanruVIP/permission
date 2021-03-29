@@ -40,6 +40,7 @@ function defaultRouter(r){
     for(let item of r){
         if(item.children&&item.children.length>0){
             item.redirect = {name:item.children[0].name}
+            defaultRouter(item.children)
         }
     }
 }
