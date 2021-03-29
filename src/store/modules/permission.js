@@ -2,6 +2,7 @@
 import router,{ dynamicRoutes } from '../../router/index'//导入在index里面配置的动态路由的父节点
 import dymaicList from '../../router/dynamic-router'//需要对比的列表
 import axiosMenuList from './menuList'//模拟后台返回的数据配置
+import store from  '../index'
 
 /**
  * 这里是请求后台的菜单方法，现在是写成前端配置演示的
@@ -9,7 +10,9 @@ import axiosMenuList from './menuList'//模拟后台返回的数据配置
  */
 function axiosPermission(){
     return new Promise((resolve)=>{
-        let list = axiosMenuList['superAdmin']
+        let role = store.state.UserRoleCode
+        let list = axiosMenuList[role]||axiosMenuList['other']
+        console.warn(axiosMenuList[role])
         resolve(list)
     })
 }
@@ -31,6 +34,14 @@ function filterRouter(axiosResult){
         })
     })
     return returnList
+}
+//设置默认路由，登陆进来redirect重定向到第一个菜单
+function defaultRouter(r){
+    for(let item of r){
+        if(item.children&&item.children.length>0){
+            item.redirect = {name:item.children[0].name}
+        }
+    }
 }
 
 
@@ -76,8 +87,12 @@ export default {
             let children = dynamicRoutes[0].children//直接获取到
             
             children.push(...finishRouter)
+            //此时dynamicRoutes[0]里面的children已经是权限验证之后的路由了
             // 生成侧边菜单
             commit('SET_SILDBARMENU',children)
+
+            //设置默认路由
+            defaultRouter(dynamicRoutes)
 
             /*  初始路由 ==>就是登陆的页面*/
             let initialRoutes = router.options.routes

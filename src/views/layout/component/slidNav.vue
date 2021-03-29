@@ -6,7 +6,7 @@
             <img class="logo" src="@/assets/3.jpg"/>
             <el-menu  class="el-menu-vertical-demo"
                       :collapse="false"
-                      default-active="teacherMent1"
+                      :default-active="currentMenu"
             >
                 <menu-item :sidebarMenu="sidebarMenu" :currentMenu="currentMenu"></menu-item>
             </el-menu>
@@ -30,7 +30,7 @@
         },
         created() {
             this.$nextTick(()=>{
-                console.warn(this.sidebarMenu)
+                // console.warn(this.currentMenu)
 
             })
         }
@@ -67,18 +67,21 @@
             color:$navDefaultColor;
             font-size:16px
         }
-        .el-submenu__title:hover{
+        .el-submenu__title:hover,.el-menu-item:hover{
             background: rgb(3, 38, 58);
         }
-        .el-menu-item:focus,.el-menu-item:hover,{
-            background: $activeColor;
-        }
-        &.el-menu-item:focus,.is-active .is-active{
-            background: $activeColor;
+
+        .el-menu-item:focus{
+            background: $navDefaultBg;
         }
         .el-icon-location,.el-icon-bell{
             color:$navDefaultColor;
             font-size: 20px;
+        }
+        li{
+            &.el-menu-item.is-active{
+                background:$activeColor !important;
+            }
         }
     }
 

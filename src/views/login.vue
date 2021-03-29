@@ -9,10 +9,10 @@
             <div class="input-group">
                 <el-form ref="form"  :model="form">
                     <el-form-item label="账户名称"  prop="username">
-                        <el-input v-model.trim="form.username" placeholder="admin"></el-input>
+                        <el-input v-model.trim="form.username" placeholder="账户说明查看login()"></el-input>
                     </el-form-item>
                     <el-form-item label="账户密码" prop="password">
-                        <el-input v-model.trim="form.password" placeholder="8888" show-password></el-input>
+                        <el-input v-model.trim="form.password" placeholder="不做账号密码验证" show-password></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button size="medium" class="max-btn" @click="login" type="primary" :loading="loading">立即登录</el-button>
@@ -44,6 +44,9 @@ export default {
             this.loading = true
             setTimeout(()=>{
                 this.loading = false
+                //用户角色记录，只有school这个账号才是完整的菜单,其他账号的菜单是不完整的
+                //所有账号都不需要密码，不做账号密码验证
+                this.$store.commit('userRoleCode',this.form.username)
                 this.$store.commit('loginSuccess','a123-uuser-1285-9969-admin123')
 
                 this.$router.push({path: '/'}).catch(() => {

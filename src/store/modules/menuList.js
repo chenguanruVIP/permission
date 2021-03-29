@@ -7,7 +7,7 @@
  */
 export default {
     // 超级管理员
-    'superAdmin':[
+    'school':[
         {
             id:'001',
             menuName:'学校管理',
@@ -78,7 +78,7 @@ export default {
         }
     ],
     //其他账号
-    'teacher':[
+    'other':[
         {
             id:'003',
             menuName:'学生管理',

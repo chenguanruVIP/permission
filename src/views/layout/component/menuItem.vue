@@ -35,7 +35,7 @@ export default {
         ...mapState('permission',['currentMenu'])
     },
     created() {
-        console.log("获取的数据",this.sidebarMenu)
+        // console.log("获取的数据",this.sidebarMenu)
     },
     methods:{
         gotoRoute(name){

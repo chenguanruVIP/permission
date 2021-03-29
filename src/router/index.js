@@ -29,6 +29,7 @@ export const dynamicRoutes = [
         path:'',
         component:Layout,
         name: 'container',
+        // redirect: 'home',
         children:[
 
         ]
