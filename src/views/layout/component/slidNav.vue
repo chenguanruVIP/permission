@@ -3,7 +3,9 @@
     <div class="main">
         <!-- 侧边栏 -->
         <div class="slid-box">
-            <img class="logo" src="@/assets/3.jpg"/>
+            <a href="https://github.com/chenguanruVIP/permission">
+                <img class="logo" src="@/assets/3.jpg"/>
+            </a>
             <el-menu  class="el-menu-vertical-demo"
                       :collapse="false"
                       :default-active="currentMenu"
