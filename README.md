@@ -6,6 +6,10 @@
 
 账号密码不做任何验证，不填账号密码登陆进去的就是其他账号
 
+![Alt text](./src/assets/5.jpg "Optional title")
+![Alt text](./src/assets/6.jpg "Optional title")
+![Alt text](./src/assets/7.jpg "Optional title")
+
 ## Project setup
 ```
 npm install
