@@ -1,10 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import indexView from '../pages/index'
 
 Vue.use(VueRouter)
 
 const routes = [
-
+    {
+        path:'/',
+        name:'home',
+        component:indexView
+    }
 ]
 
 const router = new VueRouter({
