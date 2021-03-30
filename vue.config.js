@@ -1,9 +1,13 @@
 module.exports = {
     pages:{
         index:{
+            // page 的入口
             entry: 'src/views/index/main.js',
+            // 模板来源
             template: 'src/public/index.html',
+            // 在 dist/index.html 的输出
             filename: 'index.html',
+            // 提取出来的通用 chunk 和 vendor chunk。
             chunks: ['chunk-vendors', 'chunk-common', 'index']
         },
         system1:{
